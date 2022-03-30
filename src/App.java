@@ -113,7 +113,7 @@ class main {
        System.out.println("");
  
        System.out.println("Produto: " + prod1.categoria_produto + "\nModelo: " +
-               prod1.modelo + "\nnTipo: " + prod1.tipo);
+               prod1.modelo + "\nTipo: " + prod1.tipo);
  
        System.out.println("");
    }
