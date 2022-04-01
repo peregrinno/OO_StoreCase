@@ -1,5 +1,30 @@
 // Orientação a Obejtos - Professor Jorge Fonseca
 //Alunos: Hydelbranda, Felipe, Luan, Moyses e Edson
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+class Conexao {
+    private String url;
+    private String username;
+    private String password;
+    private Connection con;
+
+    Conexao(){
+        url = "jdbc:postgresql://localhost:5432/StoreCase";
+        username = "postgres";
+        password = "123456";
+
+        try {
+
+            Class.forName("org.postgresql.Driver");
+            con =    DriverManager.getConnection(url, username,password);
+            System.out.println("Conexão Realizada com Sucesso!");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
 
 class Produto {
    int id_produto;
@@ -21,8 +46,7 @@ class Funcionario {
 class main {
    public static void main(String[] args) {
 
-      System.out.println("okok felipe");
-
+      Conexao con = new Conexao();
       Produto prod1 = new Produto();
       Funcionario fun1 = new Funcionario();
 
