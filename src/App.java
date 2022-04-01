@@ -1,31 +1,5 @@
 // Orientação a Obejtos - Professor Jorge Fonseca
 //Alunos: Hydelbranda, Felipe, Luan, Moyses e Edson
-import java.sql.Connection;
-import java.sql.DriverManager;
-
-class Conexao {
-    private String url;
-    private String username;
-    private String password;
-    private Connection con;
-
-    Conexao(){
-        url = "jdbc:postgresql://localhost:5432/StoreCase";
-        username = "postgres";
-        password = "123456";
-
-        try {
-
-            Class.forName("org.postgresql.Driver");
-            con =    DriverManager.getConnection(url, username,password);
-            System.out.println("Conexão Realizada com Sucesso!");
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-}
-
 class Produto {
    int id_produto;
    String categoria_produto;
@@ -47,100 +21,18 @@ class main {
    public static void main(String[] args) {
 
       Conexao con = new Conexao();
-      Produto prod1 = new Produto();
-      Funcionario fun1 = new Funcionario();
+      //Produto prod1 = new Produto();
+      //Funcionario fun1 = new Funcionario();
 
-      prod1.id_produto = 001;
-      prod1.categoria_produto = "Pelicula";
-      prod1.tipo = "3D";
-      prod1.modelo = "M52 5G";
+      String sql = "INSERT into Produto (modelo, tipo, preco, categoria, id_produto)"+
+                  "values ('M52','Silicone','35','Case',default)";
 
-      prod1.id_produto = 101;
-      prod1.categoria_produto = "Case";
-      prod1.tipo = "Anti-impacto";
-      prod1.modelo = "M52 5G";
+      int res = con.executaPostgres(sql);
+      if (res > 0) {
+         System.out.println("Cadastrado com Sucesso!");
+      }  else {
+         System.out.println("Erro!");
+      }
 
-      prod1.id_produto = 201;
-      prod1.categoria_produto = "Carregador";
-      prod1.tipo = "Portatil";
-      prod1.modelo = "M52 5G";
-
-      prod1.id_produto = 301;
-      prod1.categoria_produto = "Fone de ouvido";
-      prod1.tipo = "Com Fio";
-      prod1.modelo = "M52 5G";
-
-      fun1.id_funcionario = 401;
-      fun1.nome = "Hydelbranda Melo";
-      fun1.cpf = "65432198222";
-      fun1.data_nasc = "06/06/2002";
-      fun1.endereco = "Rua do Grajau, 66";
-      fun1.funcao = "Proprietária - Caixa";
-
-      Produto prod2 = new Produto();
-      Funcionario fun2 = new Funcionario();
-
-      prod2.id_produto = 002;
-      prod2.categoria_produto = "Pelicula";
-      prod2.tipo = "PADRÃO";
-      prod2.modelo = "IPhone XR";
-
-      prod2.id_produto = 102;
-      prod2.categoria_produto = "Case";
-      prod2.tipo = "Silicone";
-      prod2.modelo = "IPhone XR";
-
-      prod2.id_produto = 202;
-      prod2.categoria_produto = "Carregador";
-      prod2.tipo = "Portatil";
-      prod2.modelo = "iPhone XR";
-
-      prod2.id_produto = 302;
-      prod2.categoria_produto = "Fone de ouvido";
-      prod2.tipo = "AIRDOT";
-      prod2.modelo = "IPhone XR";
-
-      fun2.id_funcionario = 402;
-      fun2.nome = "José Felipe";
-      fun2.cpf = "11122233344";
-      fun2.data_nasc = "Quintas das Colinas humildes";
-      fun2.funcao = "Vendedor";
-
-      Produto prod3 = new Produto();
-      Funcionario fun3 = new Funcionario();
-
-      prod3.id_produto = 003;
-      prod3.categoria_produto = "Pelicula";
-      prod3.tipo = "HIDROGEL";
-      prod3.modelo = "Xiaomi Mi 11";
-
-      prod3.id_produto = 103;
-      prod3.categoria_produto = "Case";
-      prod3.tipo = "Aveludada";
-      prod3.modelo = "Xiaomi Mi 11";
-
-      prod3.id_produto = 203;
-      prod3.categoria_produto = "Carregador";
-      prod3.tipo = "Turbo";
-      prod3.modelo = "Xiaomi Mi 11";
-
-      prod3.id_produto = 303;
-      prod3.categoria_produto = "Fone de ouvido";
-      prod3.tipo = "Headfone";
-      prod3.modelo = "Xiaomi Mi 11";
-
-      fun3.id_funcionario = 403;
-      fun3.nome = "Luan Araújo";
-      fun3.cpf = "02702904121";
-      fun3.data_nasc = "19/08/1997";
-      fun3.endereco = "Rua Ronaldo Barata, 09";
-      fun3.funcao = "Estoque";
-
-      System.out.println("");
-
-      System.out.println("Produto: " + prod1.categoria_produto + "\nModelo: " +
-            prod1.modelo + "\nTipo: " + prod1.tipo);
-
-      System.out.println("");
    }
 }
