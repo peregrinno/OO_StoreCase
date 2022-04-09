@@ -1,6 +1,7 @@
 // Orientação a Obejtos - Professor Jorge Fonseca
 //Alunos: Hydelbranda, Felipe, Luan, Moises e Edson
 
+import java.io.IOException;
 import java.util.Scanner;
 
 class Produto {
@@ -49,41 +50,51 @@ class funcoes {
 class main {
    public static void main(String[] args) {
       boolean status_loja = true;
-      Scanner ler = new Scanner(System.in);
-      int ent_int1;
+      try (Scanner ler = new Scanner(System.in)) {
+         int ent_int1;
 
-      Conexao con = new Conexao();
-      /*
-      Produto prod1 = new Produto();
-      Funcionario fun1 = new Funcionario();
+         Conexao con = new Conexao();
+         /*
+         Produto prod1 = new Produto();
+         Funcionario fun1 = new Funcionario();
 
-      String sql = "INSERT into Produto (modelo, tipo, preco, categoria, id_produto)"+
-                   "values ('M52','Silicone','35','Case',default)";
+         String sql = "INSERT into Produto (modelo, tipo, preco, categoria, id_produto)"+
+                      "values ('M52','Silicone','35','Case',default)";
 
-      int res = con.executaPostgres(sql);
-      if (res > 0) {
-         System.out.println("Cadastrado com Sucesso!");
-      }  else {
-         System.out.println("Erro!");
-      }
-      */
+         int res = con.executaPostgres(sql);
+         if (res > 0) {
+            System.out.println("Cadastrado com Sucesso!");
+         }  else {
+            System.out.println("Erro!");
+         }
+         */
 
-      while (status_loja == true) {
-         System.out.println("+######  STORE CASE - CARUARU  ###### +");
-         System.out.println("+                MENU                 +");
-         System.out.println("+                                     +");
-         System.out.println("+              [0] - SAIR             +");
-         System.out.println("+                                     +");
-         System.out.println("+                                     +");
-         System.out.println("+-------------------------------------+");
-         System.out.println("         Furadeira Labs - 2022         ");
+         while (status_loja == true) {
+            System.out.println("+######  STORE CASE - CARUARU  ###### +");
+            System.out.println("+                MENU                 +");
+            System.out.println("+                                     +");
+            System.out.println("+          [1] - ESTOQUE              +");
+            System.out.println("+          [2] - RECURSOS HUMANOS     +");
+            System.out.println("+          [3] - PVD                  +");
+            System.out.println("+          [4] - RELATORIO DE VENDAS  +");
+            System.out.println("+          [0] - SAIR                 +");
+            System.out.println("+                                     +");
+            System.out.println("+-------------------------------------+");
+            System.out.println("         Furadeira Labs - 2022         ");
+            System.out.print("->  ");
 
-         ent_int1 = ler.nextInt();
-
-         switch (ent_int1) {
-            case 0:
-               System.out.println("Saindo.. ");
-               status_loja = false;
+            ent_int1 = ler.nextInt();
+            switch (ent_int1) {
+               case 0:
+                  System.out.println("Saindo.. ");
+                  status_loja = false;
+               case 1:
+                  System.out.println("ESTOQUE! - EM CONSTRUÇÃO");
+               case 2:
+                  System.out.println("RH! - EM CONSTRUÇÃO");
+               default:
+                  System.out.println("Entrada inexistente! ");
+            }
          }
       }
 
