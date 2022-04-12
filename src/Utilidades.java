@@ -1,4 +1,4 @@
-public class Util {
+public class Utilidades {
     static String MenuEstoque() {
         String menu = "+######  STORE CASE - CARUARU  ###### +\n" +
                 "+              ESTOQUE                +\n" +
@@ -11,5 +11,9 @@ public class Util {
                 "+-------------------------------------+\n" +
                 "->  ";
         return menu;
+    }
+
+    static Integer ValidaEntrada(int ent_int1) {
+
     }
 }
