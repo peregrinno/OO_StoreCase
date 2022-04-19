@@ -82,7 +82,8 @@ class main {
          "[1] REMOVER PRODUTO" + "\n" + 
          "[2] PROCURAR PRODUTO" + "\n" + 
          "[3] REMOVER FUNCIONARIO" + "\n" + 
-         "[4] PROCURAR FUNCIONARIO");
+         "[4] PROCURAR FUNCIONARIO" + "\n" + 
+         "[5] CARGOS");
          System.out.print("--> ");
          
          switch (entrada.nextInt()){
@@ -148,6 +149,8 @@ class main {
                   System.out.println("Funcionario não encontrado");
                   break;
                }
+            case 5:
+               colecaoFuncoes.imprimir(cargo1, cargo2, cargo3);
             default:
                status_loja = false;
                break;

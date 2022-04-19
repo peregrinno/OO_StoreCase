@@ -19,4 +19,9 @@ public class ColecaoDeFuncoes {
             }
         }
     }
+
+    public void imprimir(Funcoes fun1, Funcoes fun2, Funcoes fun3){
+        System.out.println("CARGOS \n" + fun1.getFuncao() + "\n" + fun2.getFuncao() + "\n" + fun3.getFuncao());
+        
+    }
 }
