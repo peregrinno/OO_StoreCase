@@ -42,15 +42,38 @@ class main {
       //Adiciona a colecao
       colecao.adicionar(produto2);
 
-      System.out.println("COLEÇÃO ATUAL");
-      for(int i = 0; i < colecao.meusProdutos.size(); i++){
-         System.out.println(colecao.meusProdutos.get(i).getIdproduto());
-     }
+      //Cria coleção para funcionários
+      ColecaoDeFuncionarios colecaoFuncionarios = new ColecaoDeFuncionarios();
 
-      while (status_loja = true){
-         System.out.println("MENU" + "\n"+
-         "[1] REMOVER" + "\n" + 
-         "[2] PROCURAR");
+      //Cria primeiro obejto da classe funcionario
+      Funcionario funcionario1 = new Funcionario();
+      Funcionario funcionario2 = new Funcionario();
+
+      //Adiciona um funcionario
+      funcionario1.setIdfuncionario(1);
+      funcionario1.setNome("Hydelbranda Melo");
+      funcionario1.setData_de_nascimento("06/06/2002");
+      funcionario1.setFuncao("Operadora de Caixa");
+      funcionario1.setEndereco("Casa de Taty");
+
+      //Adiciona outro funcionario
+      funcionario2.setIdfuncionario(1);
+      funcionario2.setNome("José Felipe");
+      funcionario2.setData_de_nascimento("13/09/2000");
+      funcionario2.setFuncao("Atendente");
+      funcionario2.setEndereco("Condominio Morada nobre");
+
+      //Adciona na coleção de funcionarios
+      colecaoFuncionarios.adicionar(funcionario1);
+      colecaoFuncionarios.adicionar(funcionario2);
+
+
+      while (status_loja == true){
+         System.out.println("+      MENU       +" + "\n"+
+         "[1] REMOVER PRODUTO" + "\n" + 
+         "[2] PROCURAR PRODUTO" + "\n" + 
+         "[3] REMOVER FUNCIONARIO" + "\n" + 
+         "[4] PROCURAR FUNCIONARIO");
          System.out.print("--> ");
          
          switch (entrada.nextInt()){
@@ -84,6 +107,36 @@ class main {
                   break;
                }else {
                   System.out.println("Produto não encontrado");
+                  break;
+               }
+               case 3:
+                  int aux_remover_funcionario;
+                  Scanner remove_f = new Scanner(System.in);
+                  System.out.print("[REMOÇÃO] ID DO FUNCIONARIO: ");
+                  aux_remover_funcionario = remove_f.nextInt();
+                  if (aux_remover_funcionario == 1){
+                     colecaoFuncionarios.remover(funcionario1);
+                     break;
+                  } else if (aux_remover_funcionario == 2){
+                     colecaoFuncionarios.remover(funcionario2);
+                     break;
+                  }else {
+                     System.out.println("Nenhum funcionario encontrado!");
+                     break;
+                  }
+               case 4:
+               int aux_procurar_funcionario;
+               Scanner procurar_f = new Scanner(System.in);
+               System.out.print("[BUSCA] ID DO FUNCIONARIO: ");
+               aux_procurar_funcionario = procurar_f.nextInt();
+               if (aux_procurar_funcionario == 1){
+                  colecaoFuncionarios.procurar(funcionario1);
+                  break;
+               } else if (aux_procurar_funcionario == 2){
+                  colecaoFuncionarios.procurar(funcionario2);
+                  break;
+               } else {
+                  System.out.println("Funcionario não encontrado");
                   break;
                }
             default:

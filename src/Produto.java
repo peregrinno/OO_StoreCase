@@ -1,13 +1,9 @@
-import java.rmi.server.RemoteRef;
-
-import org.postgresql.util.PGBinaryObject;
-
 class Produto {
-    int id_produto;
-    String categoria_produto;
-    String modelo;
-    String tipo;
-    Double valor_produto;
+    private int id_produto;
+    private String categoria;
+    private String modelo;
+    private String tipo;
+    private Double preco;
 
     public void setIdproduto(Integer id){
         this.id_produto = id;
@@ -18,11 +14,11 @@ class Produto {
     }
 
     public void setCategoria (String categoria){
-        this.categoria_produto = categoria;
+        this.categoria = categoria;
     }
 
     public String getCategoria(){
-        return categoria_produto;
+        return categoria;
     }
 
     public void setModelo (String modelo) {
@@ -42,18 +38,18 @@ class Produto {
     }
 
     public void setPreco (Double preco){
-        this.valor_produto = preco;
+        this.preco = preco;
     }
 
     public Double getPreco(){
-        return valor_produto;
+        return preco;
     }
 
     public String imprimir(){
         return "Produto encontrado!" + "\n" + id_produto + "\n" +
-                "Categoria: " + categoria_produto + "\n" +
+                "Categoria: " + categoria + "\n" +
                 "Modelo: " + modelo + "\n" +
                 "Tipo: " + tipo + "\n" + 
-                "Preço: " + valor_produto;
+                "Preço: " + preco;
     }
 }
