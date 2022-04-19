@@ -13,7 +13,4 @@ public class Utilidades {
         return menu;
     }
 
-    static Integer ValidaEntrada(int ent_int1) {
-
-    }
 }
