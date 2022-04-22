@@ -32,4 +32,16 @@ class Conexao {
         }
         return 0;
       }
+
+      public ResultSet executaBusca(String sql){
+          try {
+              Statement stm = con.createStatement();
+              ResultSet rs = stm.executeQuery(sql);
+              con.close();
+              return rs;
+          } catch (Exception e) {
+              e.printStackTrace();
+              return null;
+          }
+      }
   }

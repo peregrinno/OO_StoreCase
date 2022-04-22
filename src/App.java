@@ -8,22 +8,6 @@ class main {
       boolean status_loja = true;
       Scanner entrada = new Scanner(System.in);
 
-      //Cria lista de funções
-      Funcoes cargo1 = new Funcoes();
-      Funcoes cargo2 = new Funcoes();
-      Funcoes cargo3 = new Funcoes();
-
-      //Define cargos
-      cargo1.setFuncao("Operador de caixa");
-      cargo2.setFuncao("Atendente");
-      cargo3.setFuncao("Estoquista");
-
-      //Adiciona a coleção de funções
-      ColecaoDeFuncoes colecaoFuncoes = new ColecaoDeFuncoes();
-      colecaoFuncoes.adicionar(cargo1);
-      colecaoFuncoes.adicionar(cargo2);
-      colecaoFuncoes.adicionar(cargo3);
-
       //Cria coleção para armazenamento de obejetos
       ColecaoDeProdutos colecao = new ColecaoDeProdutos();
 
@@ -54,7 +38,7 @@ class main {
       //Cria coleção para funcionários
       ColecaoDeFuncionarios colecaoFuncionarios = new ColecaoDeFuncionarios();
 
-      //Cria primeiro obejto da classe funcionario
+      //Cria primeiro objeto da classe funcionario
       Funcionario funcionario1 = new Funcionario();
       Funcionario funcionario2 = new Funcionario();
 
@@ -83,7 +67,9 @@ class main {
          "[2] PROCURAR PRODUTO" + "\n" + 
          "[3] REMOVER FUNCIONARIO" + "\n" + 
          "[4] PROCURAR FUNCIONARIO" + "\n" + 
-         "[5] CARGOS");
+         "[5] CADASTRA CARGOS" + "\n" +
+         "[6] BUSCA CARGOS"+ "\n" +
+         "[7] REMOVE CARGOS");
          System.out.print("--> ");
          
          switch (entrada.nextInt()){
@@ -150,10 +136,45 @@ class main {
                   break;
                }
             case 5:
-               colecaoFuncoes.imprimir(cargo1, cargo2, cargo3);
+               Scanner str_f_entrada_funcao = new Scanner(System.in);
+               String auxstr_f_entrada_funcao;
+               System.out.print("Nome do Cargo: ");
+               auxstr_f_entrada_funcao = str_f_entrada_funcao.nextLine();
+
+               //Cria objeto de funções
+               Funcoes cargo = new Funcoes();
+               
+               //Define cargo
+               cargo.setFuncao(auxstr_f_entrada_funcao);
+
+               //Adiciona a coleção de funções
+               ColecaoDeFuncoes colecaoFuncoes = new ColecaoDeFuncoes();
+               colecaoFuncoes.adicionar(cargo);
+               break;
+            case 6:
+               ColecaoDeFuncoes buscaFuncoes = new ColecaoDeFuncoes();
+
+               buscaFuncoes.procurar();
+               break;
+            case 7:
+               Scanner int_f_entrada_funcao = new Scanner(System.in);
+               int auxint_f_entrada_funcao;
+
+               System.out.print("ID PARA REMOÇÃO");
+               auxint_f_entrada_funcao = int_f_entrada_funcao.nextInt();
+
+               Funcoes id_cargo = new Funcoes();
+
+               id_cargo.setIdFuncao(auxint_f_entrada_funcao);
+
+               ColecaoDeFuncoes removeFuncoes = new ColecaoDeFuncoes();
+               removeFuncoes.remover(id_cargo);
+               break;
+
             default:
                status_loja = false;
                break;
+
          }
          
       }

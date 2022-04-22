@@ -1,27 +1,44 @@
 import java.util.*;
+import java.sql.ResultSet;
+
 public class ColecaoDeFuncoes {
-    ArrayList<Funcoes> minhasFuncoes = new ArrayList<>();
-
     public void adicionar (Funcoes fun){
-        minhasFuncoes.add(fun);
-    }
+        Conexao con = new Conexao();
 
-    public void remover(Funcoes fun){
-        minhasFuncoes.remove(fun);
-    }
+        String sql = "INSERT into funcoes (id_funcao, funcao)"+
+                     "values (default,'"+fun.getFuncao()+"')";
 
-    public void procurar(Funcoes fun){
-        for(int i = 0; i < minhasFuncoes.size(); i++){
-            if(minhasFuncoes.contains(fun)){
-                System.out.println("Função encontrada: "+ fun.getFuncao());
-            } else {
-            System.out.println("Função não encontrada.");
-            }
+        int res = con.executaPostgres(sql);
+        if (res > 0){
+            System.out.println("Cargo adicionado com Sucesso!");
+        }else{
+            System.out.println("Erro durante o cadastro!");
         }
     }
 
-    public void imprimir(Funcoes fun1, Funcoes fun2, Funcoes fun3){
-        System.out.println("CARGOS \n" + fun1.getFuncao() + "\n" + fun2.getFuncao() + "\n" + fun3.getFuncao());
-        
+    public void remover(Funcoes fun){
+        Conexao con = new Conexao();
+
+        String sql = "DELETE FROM funcoes WHERE id_funcao = '"+fun.getId() +"';";
+
+    }
+
+    public void procurar(){
+        Conexao con = new Conexao();
+
+        String sql = "SELECT * from funcoes";
+
+        ResultSet rs = con.executaBusca(sql);
+        System.out.println("        CARGOS ");
+        System.out.println("   ID  -    CARGO");
+        try {
+            while (rs.next()){
+                int id = rs.getInt("id_funcao");
+                String funcao = rs.getString("funcao");
+                System.out.println("   "+ id +"   -     "+ funcao);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
