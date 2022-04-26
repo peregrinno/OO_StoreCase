@@ -1,29 +1,29 @@
 import java.util.*;
 import java.sql.ResultSet;
 
-public class ColecaoDeFuncoes {
-    public void adicionar (Funcoes fun){
+public class ColecaoDeFuncoes implements ContratoFuncoes {
+    public void adicionar(Funcoes fun) {
         Conexao con = new Conexao();
 
-        String sql = "INSERT into funcoes (id_funcao, funcao)"+
-                     "values (default,'"+fun.getFuncao()+"')";
+        String sql = "INSERT into funcoes (id_funcao, funcao)" +
+                "values (default,'" + fun.getFuncao() + "')";
 
         int res = con.executaPostgres(sql);
-        if (res > 0){
+        if (res > 0) {
             System.out.println("Cargo adicionado com Sucesso!");
-        }else{
+        } else {
             System.out.println("Erro durante o cadastro!");
         }
     }
 
-    public void remover(Funcoes fun){
+    public void remover(Funcoes fun) {
         Conexao con = new Conexao();
 
-        String sql = "DELETE FROM funcoes WHERE id_funcao = '"+fun.getId() +"';";
+        String sql = "DELETE FROM funcoes WHERE id_funcao = '" + fun.getId() + "';";
 
     }
 
-    public void procurar(){
+    public void procurar() {
         Conexao con = new Conexao();
 
         String sql = "SELECT * from funcoes";
@@ -32,13 +32,14 @@ public class ColecaoDeFuncoes {
         System.out.println("        CARGOS ");
         System.out.println("   ID  -    CARGO");
         try {
-            while (rs.next()){
+            while (rs.next()) {
                 int id = rs.getInt("id_funcao");
                 String funcao = rs.getString("funcao");
-                System.out.println("   "+ id +"   -     "+ funcao);
+                System.out.println("   " + id + "   -     " + funcao);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
 }
