@@ -37,7 +37,7 @@ class main {
       colecao.adicionar(produto2);
 
       // Cria coleção para funcionários
-      ColecaoDeFuncionarios colecaoFuncionarios = new ColecaoDeFuncionarios();
+      ContratoFuncionarios colecaoFuncionarios = new ColecaoDeFuncionarios();
 
       // Cria primeiro objeto da classe funcionario
       Funcionario funcionario1 = new Funcionario();
@@ -69,7 +69,8 @@ class main {
                "[4] PROCURAR FUNCIONARIO" + "\n" +
                "[5] CADASTRA CARGOS" + "\n" +
                "[6] BUSCA CARGOS" + "\n" +
-               "[7] REMOVE CARGOS");
+               "[7] REMOVE CARGOS" + "\n" +
+               "[8] ABRIR CAIXA");
          System.out.print("--> ");
 
          switch (entrada.nextInt()) {
@@ -171,6 +172,27 @@ class main {
                removeFuncoes.remover(id_cargo);
                break;
 
+            case 8:
+               Scanner entradas_caixa = new Scanner(System.in);
+               Float c_abre_caixa;
+               String operador;
+
+               System.out.println("Nome do operador: ");
+               operador = entradas_caixa.nextLine();
+               System.out.println("Valor do abertura");
+               c_abre_caixa = entradas_caixa.nextFloat();
+
+               caixa cx = new caixa();
+
+               cx.setCaixaInicial(c_abre_caixa);
+               cx.setOperador(operador);
+               cx.setResgis_Caixa(1);
+
+               ContratoCaixa cadastra_caixa = new ColecaoDeCaixas();
+
+               cadastra_caixa.adicionar(cx);
+               break;
+               
             default:
                status_loja = false;
                break;

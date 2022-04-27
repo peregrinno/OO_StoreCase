@@ -1,5 +1,5 @@
 import java.util.*;
-public class ColecaoDeFuncionarios {
+public class ColecaoDeFuncionarios implements ContratoFuncionarios{
     ArrayList<Funcionario> meusFuncionarios = new ArrayList<>();
 
     public void adicionar (Funcionario f){
