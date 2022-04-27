@@ -10,7 +10,7 @@ class main {
       Scanner entrada = new Scanner(System.in);
 
       // Cria coleção para armazenamento de obejetos
-      ColecaoDeProdutos colecao = new ColecaoDeProdutos();
+      ContratoProdutos colecao = new ColecaoDeProdutos();
 
       // Cria primeiro objeto da classe produto
       Produto produto1 = new Produto();

@@ -1,5 +1,5 @@
 import java.util.*;
-public class ColecaoDeProdutos {
+public class ColecaoDeProdutos implements ContratoProdutos{
     ArrayList<Produto> meusProdutos = new ArrayList<>();
 
     public void adicionar (Produto p){
