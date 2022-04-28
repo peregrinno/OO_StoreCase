@@ -5,8 +5,8 @@ public class ColecaoDeCaixas implements ContratoCaixa{
     public void adicionar(caixa cx) {
         Conexao con = new Conexao();
 
-        String sql = "INSERT into Caixa (registro_caixa, caixa_inicial, nome, forma_de_pagamento)" +
-                    "values (default, "+cx.getCaixaInicial()+", '"+cx.getOperador() +"', 'pix')";
+        String sql = "INSERT into caixa (registro_caixa, caixa_inicial, formas_de_pagamento, operador)" +
+                    "values (default, "+cx.getCaixaInicial()+", 'pix', '"+cx.getOperador() +"')";
         
         int res = con.executaPostgres(sql);
         if (res > 0) {
