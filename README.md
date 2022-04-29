@@ -1,6 +1,16 @@
-## Getting Started
+## Começando pelo começo!
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Esse projeto une duas cadeiras que estou pagando: Banco de dados I e Programação Orientada a Objetos!
+
+### Squad: 
+Luan Araujo & </br>
+Hydelbranda & </br>
+Felipe & </br>
+Moises & </br>
+Edson
+
+
+![gif](https://i.giphy.com/ckr4W2ppxPBeIF8dx4.gif)
 
 ## Folder Structure
 
