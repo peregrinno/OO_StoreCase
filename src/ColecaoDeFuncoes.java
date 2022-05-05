@@ -39,7 +39,7 @@ public class ColecaoDeFuncoes implements ContratoFuncoes {
             }
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        } 
     }
 
 }

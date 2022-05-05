@@ -19,7 +19,7 @@ public class ColecaoDeProdutos implements ContratoProdutos{
                                     "Tipo: " + p.getTipo() + "\n" + 
                                     "Preço: " + p.getPreco());
             } else {
-            System.out.println("Produto não encontrado.");
+                System.out.println("Produto não encontrado.");
             }
         }
     }
