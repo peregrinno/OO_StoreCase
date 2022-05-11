@@ -1,4 +1,4 @@
-class caixa {
+class Caixa {
 
     Float caixa_inicial;
     String operador;

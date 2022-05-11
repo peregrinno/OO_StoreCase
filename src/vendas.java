@@ -1,4 +1,4 @@
-class vendas {
+class Vendas {
 
     int id_venda;
     String operador;

@@ -2,7 +2,7 @@ import java.util.*;
 import java.sql.ResultSet;
 
 public class ColecaoDeCaixas implements ContratoCaixa{
-    public void adicionar(caixa cx) {
+    public void adicionar(Caixa cx) {
         Conexao con = new Conexao();
 
         String sql = "INSERT into caixa (registro_caixa, caixa_inicial, formas_de_pagamento, operador)" +
@@ -17,12 +17,12 @@ public class ColecaoDeCaixas implements ContratoCaixa{
         
     }
 
-    public void remover(caixa cx) {
+    public void remover(Caixa cx) {
         
     }
 
 
-    public void procurar(caixa cx) {
+    public void procurar(Caixa cx) {
         
         
     }

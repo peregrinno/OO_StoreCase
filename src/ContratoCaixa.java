@@ -1,8 +1,8 @@
 public interface ContratoCaixa {
     
-    public void adicionar(caixa cx);
+    public void adicionar(Caixa cx);
 
-    public void remover(caixa cx);
+    public void remover(Caixa cx);
 
-    public void procurar(caixa cx);
+    public void procurar(Caixa cx);
 }

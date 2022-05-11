@@ -1,204 +1,145 @@
-// Orientação a Obejtos - Professor Jorge Fonseca
-//Alunos: Hydelbranda, Felipe, Luan, Moises e Edson
-
 import java.util.*;
+// Zé Felipe e Luan do brega
+public class App {
+    public static void main(String[] args) throws Exception {
+        boolean status_loja = true;
+        String entrada1;
+        
+       // boolean status_adm = true;
+        //Scanner menu_adm = new Scanner(System.in);
 
-class main {
-   public static void main(String[] args) {
+        //entrada_menu
+        Scanner entrada_menu_inicial = new Scanner(System.in);
+        while (status_loja == true) {
+            //Novo objeto para utilitarios
+            Utilitarios util = new Utilitarios();
 
-      boolean status_loja = true;
-      Scanner entrada = new Scanner(System.in);
+            //Chama metodo para mostrar menu
+            System.out.print(util.mostrar_menu_inicial());
+            
+            entrada1 = entrada_menu_inicial.nextLine();
 
-      // Cria coleção para armazenamento de obejetos
-      ContratoProdutos colecao = new ColecaoDeProdutos();
+            switch (entrada1) {
+                case "0":
+                    System.out.println("Saindo, obrigado por usar nosso sistema!");
+                    status_loja = false;
+                    break;
+                case "1":
+                    //Novo objeto de Produtos
+                    Produto produto = new Produto();
 
-      // Cria primeiro objeto da classe produto
-      Produto produto1 = new Produto();
+                    //Novo objeto da Colecao de estoque
+                    ContratoEstoque estoque = new ColecaoDeEstoque();
 
-      // Adciona atributos do objeto criado
-      produto1.setIdproduto(123);
-      produto1.setCategoria("Case");
-      produto1.setModelo("Motorola");
-      produto1.setTipo("Silicone");
-      produto1.setPreco(17.0);
-      // Adiciona a colecao
-      colecao.adicionar(produto1);
+                    Scanner entrada_menu_estoque = new Scanner(System.in);
+                    String ent_menu_estoque;
+                    boolean status_estoque = true;
 
-      // Cria primeiro objeto da classe produto
-      Produto produto2 = new Produto();
+                    while(status_estoque == true){
 
-      // Adciona atributos do objeto criado
-      produto2.setIdproduto(124);
-      produto2.setCategoria("Case");
-      produto2.setModelo("Samsung");
-      produto2.setTipo("Anti-Impacto");
-      produto2.setPreco(21.0);
-      // Adiciona a colecao
-      colecao.adicionar(produto2);
+                     estoque.mostra_menu2();
 
-      // Cria coleção para funcionários
-      ContratoFuncionarios colecaoFuncionarios = new ColecaoDeFuncionarios();
+                     ent_menu_estoque = entrada_menu_estoque.nextLine();
+                     switch(ent_menu_estoque){
+                         case "1":
+                           System.out.println("Estoque atual");
+                           status_estoque = false;
+                           break;
+                         case "2":
 
-      // Cria primeiro objeto da classe funcionario
-      Funcionario funcionario1 = new Funcionario();
-      Funcionario funcionario2 = new Funcionario();
+                           Scanner dados_produto = new Scanner(System.in);
+                           Scanner dados_flt = new Scanner(System.in);
 
-      // Adiciona um funcionario
-      funcionario1.setIdfuncionario(1);
-      funcionario1.setNome("Hydelbranda Melo");
-      funcionario1.setData_de_nascimento("06/06/2002");
-      funcionario1.setFuncao("Operadora de Caixa");
-      funcionario1.setEndereco("Casa de Taty");
+                           System.out.println("CADASTRO NOVO PRODUTOz\n");
+                           System.out.print("CATEGORIA: ");
+                           produto.setCategoria(dados_produto.nextLine());
+                           System.out.print("MODELO DO APARELHO: ");
+                           produto.setModelo(dados_produto.nextLine());
+                           System.out.print("TIPO DE "+ produto.getCategoria()+": ");
+                           produto.setTipo(dados_produto.nextLine());
+                           System.out.print("VALOR: ");
+                           produto.setPreco(dados_flt.nextFloat());
 
-      // Adiciona outro funcionario
-      funcionario2.setIdfuncionario(1);
-      funcionario2.setNome("José Felipe");
-      funcionario2.setData_de_nascimento("13/09/2000");
-      funcionario2.setFuncao("Atendente");
-      funcionario2.setEndereco("Condominio Morada nobre");
+                           estoque.cadastra(produto);
+                           status_estoque = false;
+                           dados_produto.close();
+                           dados_flt.close();
+                           break;
+                         case "3":
+                           estoque.remove(produto);
+                           status_estoque = false;
+                           break;
+                         case "4":
+                           estoque.atualiza(produto);
+                           status_estoque = false;
+                           break;
+                        default:
+                           System.out.println("Entrada incorreta");
+                     }
+                    }
+    
+                    break;
+                    /*
+                case "2":
 
-      // Adciona na coleção de funcionarios
-      colecaoFuncionarios.adicionar(funcionario1);
-      colecaoFuncionarios.adicionar(funcionario2);
+                    //Novo objeto da classe caixa
 
-      while (status_loja == true) {
-         System.out.println("+      MENU       +" + "\n" +
-               "[1] REMOVER PRODUTO" + "\n" +
-               "[2] PROCURAR PRODUTO" + "\n" +
-               "[3] REMOVER FUNCIONARIO" + "\n" +
-               "[4] PROCURAR FUNCIONARIO" + "\n" +
-               "[5] CADASTRA CARGOS" + "\n" +
-               "[6] BUSCA CARGOS" + "\n" +
-               "[7] REMOVE CARGOS" + "\n" +
-               "[8] ABRIR CAIXA");
-         System.out.print("--> ");
+                    caixa.mostra_menu2();
 
-         switch (entrada.nextInt()) {
-            case 1:
-               int aux_remover;
-               Scanner entrada_remover = new Scanner(System.in);
-               System.out.print("[REMOÇÃO] ID DO PRODUTO: ");
-               aux_remover = entrada_remover.nextInt();
-               if (aux_remover == 123) {
-                  colecao.remover(produto1);
-                  System.out.println("PRODUTO [ID_123] REMOVIDO!");
-                  break;
-               } else if (aux_remover == 124) {
-                  colecao.remover(produto2);
-                  System.out.println("PRODUTO [ID_124] REMOVIDO!");
-                  break;
-               } else {
-                  System.out.print("Nenhum produto removido");
-                  break;
-               }
-            case 2:
-               int aux;
-               Scanner entrada_procurar = new Scanner(System.in);
-               System.out.print("[BUSCA] ID DO PRODUTO: ");
-               aux = entrada_procurar.nextInt();
-               if (aux == 123) {
-                  colecao.procurar(produto1);
-                  break;
-               } else if (aux == 124) {
-                  colecao.procurar(produto2);
-                  break;
-               } else {
-                  System.out.println("Produto não encontrado");
-                  break;
-               }
-            case 3:
-               int aux_remover_funcionario;
-               Scanner remove_f = new Scanner(System.in);
-               System.out.print("[REMOÇÃO] ID DO FUNCIONARIO: ");
-               aux_remover_funcionario = remove_f.nextInt();
-               if (aux_remover_funcionario == 1) {
-                  colecaoFuncionarios.remover(funcionario1);
-                  break;
-               } else if (aux_remover_funcionario == 2) {
-                  colecaoFuncionarios.remover(funcionario2);
-                  break;
-               } else {
-                  System.out.println("Nenhum funcionario encontrado!");
-                  break;
-               }
-            case 4:
-               int aux_procurar_funcionario;
-               Scanner procurar_f = new Scanner(System.in);
-               System.out.print("[BUSCA] ID DO FUNCIONARIO: ");
-               aux_procurar_funcionario = procurar_f.nextInt();
-               if (aux_procurar_funcionario == 1) {
-                  colecaoFuncionarios.procurar(funcionario1);
-                  break;
-               } else if (aux_procurar_funcionario == 2) {
-                  colecaoFuncionarios.procurar(funcionario2);
-                  break;
-               } else {
-                  System.out.println("Funcionario não encontrado");
-                  break;
-               }
-            case 5:
-               Scanner str_f_entrada_funcao = new Scanner(System.in);
-               String auxstr_f_entrada_funcao;
-               System.out.print("Nome do Cargo: ");
-               auxstr_f_entrada_funcao = str_f_entrada_funcao.nextLine();
+                    break;
+                    */
+                    /*
+                case "3":
+                    
+                    //Novo obejto da classe funcionario
 
-               // Cria objeto de funções
-               Funcoes cargo = new Funcoes();
+                    rh.mostra_menu2();
 
-               // Define cargo
-               cargo.setFuncao(auxstr_f_entrada_funcao);
+                    break;
+                    */
+                    /*
+                case "4":
+                    
+                    //Novo objeto da classe administração
+                    while(status_adm == true){
+                        contratoCrud adm = new Adm();
 
-               // Adiciona a coleção de funções
-               ContratoFuncoes colecaoFuncoes = new ColecaoDeFuncoes();
-               colecaoFuncoes.adicionar(cargo);
-               break;
-            case 6:
-               ColecaoDeFuncoes buscaFuncoes = new ColecaoDeFuncoes();
+                        adm.mostra_menu2();
+                        entrada2 = menu_adm.nextLine();
+                        
+                        switch(entrada2){
 
-               buscaFuncoes.procurar();
-               break;
-            case 7:
-               Scanner int_f_entrada_funcao = new Scanner(System.in);
-               int auxint_f_entrada_funcao;
+                            case "0":
+                                System.out.println("Saindo");
+                                status_adm = false;
+                                break;
+                            
+                            case "1":
+                                System.out.println("Relatório de vendas");
+                                break;
+                            
+                            case "2":
+                                System.out.println("Cargos");
+                                break;
+                            
+                            case "3":
+                                System.out.println("Produtos + vendidos");
+                                break;
+                            
+                            default:
+                                System.out.println("Caso default");
+                                break;
+                        }
+                    }
+                    break;
+                    */
+                default:
+                    System.out.println("Entrada invalida");
+                    break;
+            }
+        }
 
-               System.out.print("ID PARA REMOÇÃO");
-               auxint_f_entrada_funcao = int_f_entrada_funcao.nextInt();
-
-               Funcoes id_cargo = new Funcoes();
-
-               id_cargo.setIdFuncao(auxint_f_entrada_funcao);
-
-               ColecaoDeFuncoes removeFuncoes = new ColecaoDeFuncoes();
-               removeFuncoes.remover(id_cargo);
-               break;
-
-            case 8:
-               Scanner entradas_caixa = new Scanner(System.in);
-               Float c_abre_caixa;
-               String operador;
-
-               System.out.println("Nome do operador: ");
-               operador = entradas_caixa.nextLine();
-               System.out.println("Valor do abertura");
-               c_abre_caixa = entradas_caixa.nextFloat();
-
-               caixa cx = new caixa();
-
-               cx.setCaixaInicial(c_abre_caixa);
-               cx.setOperador(operador);
-               cx.setResgis_Caixa(1);
-
-               ContratoCaixa cadastra_caixa = new ColecaoDeCaixas();
-
-               cadastra_caixa.adicionar(cx);
-               break;
-               
-            default:
-               status_loja = false;
-               break;
-
-         }
-
-      }
-   }
+        entrada_menu_inicial.close(); 
+   
+    }
 }

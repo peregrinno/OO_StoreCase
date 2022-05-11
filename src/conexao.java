@@ -1,4 +1,5 @@
 import java.sql.*;
+import java.sql.DriverManager;
 
 class Conexao {
     private String url;
@@ -12,7 +13,6 @@ class Conexao {
         password = "123456";
 
         try {
-
             Class.forName("org.postgresql.Driver");
             con = DriverManager.getConnection(url, username,password);
             System.out.println("Conexão Realizada com Sucesso!");
@@ -21,6 +21,7 @@ class Conexao {
             e.printStackTrace();
         }
     }    
+
     public int executaPostgres(String sql){
         try {
            Statement stm = con.createStatement();
@@ -33,15 +34,15 @@ class Conexao {
         return 0;
       }
 
-      public ResultSet executaBusca(String sql){
-          try {
-              Statement stm = con.createStatement();
-              ResultSet rs = stm.executeQuery(sql);
-              con.close();
-              return rs;
-          } catch (Exception e) {
-              e.printStackTrace();
-              return null;
-          }
-      }
+    public ResultSet executaBusca(String sql){
+        try {
+            Statement stm = con.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+            con.close();
+            return rs;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
   }

@@ -3,7 +3,7 @@ class Produto {
     private String categoria;
     private String modelo;
     private String tipo;
-    private Double preco;
+    private Float preco;
 
     public void setIdproduto(Integer id){
         this.id_produto = id;
@@ -37,11 +37,11 @@ class Produto {
         return tipo;
     }
 
-    public void setPreco (Double preco){
+    public void setPreco (Float preco){
         this.preco = preco;
     }
 
-    public Double getPreco(){
+    public Float getPreco(){
         return preco;
     }
 
