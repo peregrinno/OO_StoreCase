@@ -15,4 +15,18 @@ public class Utilitarios {
         return menu;
     } 
 
+    String menu_estoque(){
+        String menu_estoque = "+######  STORE CASE - CARUARU  ###### +\n" +
+                            "+              MENU - ESTOQUE         +\n" +
+                            "+                                     +\n" +
+                            "+       [1] - MOSTRA ESTOQUE ATUAL    +\n" +
+                            "+       [2] - CADASTRAR PRODUTO       +\n" +
+                            "+       [3] - REMOVER PRODUTO         +\n" +
+                            "+       [4] - EDITAR PREÇO            +\n" +
+                            "+       [0] - VOLTAR                  +\n" +
+                            "+-------------------------------------+\n" +
+                            "->  ";
+        return menu_estoque;
+    } 
+
 }

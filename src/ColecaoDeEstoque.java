@@ -1,41 +1,48 @@
 import java.util.*;
-import java.sql.ResultSet;
 
 public class ColecaoDeEstoque implements ContratoEstoque{
 
-    public void mostra_menu2(){
-        System.out.print("+######  STORE CASE - CARUARU  ###### +\n" +
-        "+              MENU - ESTOQUE         +\n" +
-        "+                                     +\n" +
-        "+       [1] - MOSTRA ESTOQUE ATUAL    +\n" +
-        "+       [2] - CADASTRAR PRODUTO       +\n" +
-        "+       [3] - REMOVER PRODUTO         +\n" +
-        "+       [4] - ATUALIZAR PRODUTO       +\n" +
-        "+       [0] - SAIR                    +\n" +
-        "+-------------------------------------+\n" +
-        "->  ");
-        
+
+    ArrayList<Produto> meusProdutos = new ArrayList<Produto>();
+
+
+    public void cadastra(Produto p){ 
+        meusProdutos.add(p);
+        System.out.println("Produto adcionado com sucesso! ");
     }
 
-    public void cadastra(Produto p){
-        Conexao con = new Conexao();
-
-        String sql = "INSERT into Produto (id_produto, modelo, tipo, preco, categoria)" +
-            "values (default, '" + p.getModelo() +"','"+ p.getTipo() +"', "+ p.getPreco() +", '"+ p.getCategoria() +"')";
-        
-        int res = con.executaPostgres(sql);
-        if (res > 0) {
-            System.out.println("Produto adicionado com Sucesso!\n");
+    public void remove(Integer cod){
+        if (cod <= 0){
+            System.out.println("Código inválido, informe algo acima de 0");
+        } else if (cod > meusProdutos.size()){
+            System.out.println("Código inválido, informe algo abaixo de "+ meusProdutos.size());
         } else {
-            System.out.println("Erro durante o cadastro!\n");
+            meusProdutos.remove(meusProdutos.get(cod - 1));
+            System.out.println("Produto removido com Sucesso!");
         }
-     }
+    }
  
-     public void remove(Produto p){
-         System.out.print("Metodo removendo produtod");
-     }
- 
-     public void atualiza(Produto p){
-         System.out.print("Metodo atualçza produto");
-     }
+    public void atualiza(Integer cod_att, Float pre_att){
+        if (cod_att <= 0){
+            System.out.println("Código inválido, informe algo acima de 0");
+        } else if (cod_att > meusProdutos.size()){
+            System.out.println("Código inválido, informe algo abaixo de "+ meusProdutos.size());
+        } else {
+            meusProdutos.get(cod_att - 1).setPreco(pre_att);
+            System.out.println("Metodo atualização produto");
+        }
+    }
+
+    public void estoque(){
+        Integer cont = 1;
+        System.out.println("+--------- INVENTÁRIO ATUAL ----------+");
+        for (int i=0; i<meusProdutos.size(); i++){
+            System.out.println("PRODUTO #" + cont++ +"\n"+
+            "CATEGORIA: " + meusProdutos.get(i).getCategoria() + "\n" +
+            "MODELO...: " + meusProdutos.get(i).getModelo() + "\n" +
+            "TIPO.....: " + meusProdutos.get(i).getTipo() + "\n" +
+            "PREÇO....: " + meusProdutos.get(i).getPreco() + "\n" + "=========================");
+        }
+        System.out.println("+-------------------------------------+");
+    }
 }
