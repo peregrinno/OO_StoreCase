@@ -5,22 +5,29 @@ public class App {
         boolean status_loja = true;
         boolean caixa_aberto = false;
         Integer entrada1;
-        
-       // boolean status_adm = true;
-        //Scanner menu_adm = new Scanner(System.in);
+
+        //Novo objeto para utilitarios
+        Utilitarios util = new Utilitarios();
+
+        ContratoFuncoes cargos = new ColecaoDeFuncoes();
+
+        //Cria funcoes
+        util.cria_cargos(cargos);
 
         //Novo objeto da Colecao de estoque
         ContratoEstoque estoque = new ColecaoDeEstoque();
 
+        //Novo objeto da colecao vendas
         ContratoDeVendas vendas = new ColecaoDeVendas();
+
+
+        //Novo objeto da colecao Funcionarios
+        ContratoFuncionarios quadro_colaboradores = new ColecaoDeFuncionarios();
 
         
         while (status_loja == true) {
             //entrada_menu
             Scanner entrada_menu_inicial = new Scanner(System.in);
-
-            //Novo objeto para utilitarios
-            Utilitarios util = new Utilitarios();
 
             //Chama metodo para mostrar menu
             System.out.print(util.mostrar_menu_inicial());
@@ -100,6 +107,7 @@ public class App {
                     
                     Scanner entrada_menu_caixa = new Scanner(System.in);
                     Integer ent_menu_caixa;
+                    Caixa cx = new Caixa();
 
                     while (status_caixa == true){
 
@@ -120,7 +128,6 @@ public class App {
                                     System.out.println("O caixa já esta aberto!");
                                     break;
                                 } else {
-                                    Caixa cx = new Caixa();
                                     System.out.print("ABERTURA DE CAIXA\n");
                                     System.out.print(" ");
                                     System.out.print("OPERADOR.....: ");
@@ -150,6 +157,7 @@ public class App {
                                     n_cliente = entrada_menu_caixa.nextLine();
                                     v.setCliente(n_cliente);
                                     util.venda_ativa(v, estoque);
+                                    cx.atualiza_caixa(v.getTotal_venda());
                                     vendas.nova_venda(v);
                                     break;
                                 }
@@ -165,16 +173,50 @@ public class App {
                         
                     }
                     break;
-                /*
-                case "3":
-                    
-                    //Novo obejto da classe funcionario
 
-                    rh.mostra_menu2();
+                case 3:
+                    boolean status_rh = true;
+
+                    Scanner entrada_menu_rh = new Scanner(System.in);
+                    Integer ent_menu_rh;
+
+                    
+                    while (status_rh == true){
+
+                        System.out.print(util.menu_rh());
+
+                        ent_menu_rh = entrada_menu_rh.nextInt();
+
+                        switch(ent_menu_rh){
+                            case 0:
+                                System.out.println("Voltando para o menu...");
+                                status_rh = false;
+                                break;
+                            case 1:
+                                Funcionario colaborador = new Funcionario();
+                                System.out.println("============ ADMISSÃO ============");
+                                System.out.print("NOME: ");
+                                entrada_menu_rh.nextLine();
+                                colaborador.setNome(entrada_menu_rh.nextLine());
+                                System.out.print("CPF: ");
+                                colaborador.setCpf(entrada_menu_rh.nextLine());
+                                System.out.print("DATA DE NASCIMENTO: ");
+                                colaborador.setData_de_nascimento(entrada_menu_rh.nextLine());
+                                System.out.print("ENDEREÇO: ");
+                                colaborador.setEndereco(entrada_menu_rh.nextLine());
+                                System.out.println("SELECIONE UM CARGO ABAIXO ");
+                                cargos.procurar();
+                                colaborador.setFuncao(cargos.getCargos(entrada_menu_rh.nextInt()));
+
+                                quadro_colaboradores.admissao(colaborador);
+                        }
+
+                    }
 
                     break;
-                    */
-                    /*
+
+                
+                /*
                 case "4":
                     
                     //Novo objeto da classe administração

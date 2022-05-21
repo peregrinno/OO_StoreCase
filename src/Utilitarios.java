@@ -31,7 +31,7 @@ public class Utilitarios {
 
     String menu_caixa(){
         String menu_caixa = "+######  STORE CASE - CARUARU  ###### +\n" +
-        "+              MENU - ESTOQUE         +\n" +
+        "+              MENU - CAIXA         +\n" +
         "+                                     +\n" +
         "+          [1] - ABRIR CAIXA          +\n" +
         "+          [2] - NOVA VENDA           +\n" +
@@ -69,6 +69,39 @@ public class Utilitarios {
                 
             }
         }
+        vd_prod.close();
+    }
 
+    String menu_rh(){
+        String menu_rh = "+######  STORE CASE - CARUARU  ###### +\n" +
+        "+              MENU - RH              +\n" +
+        "+                                     +\n" +
+        "+          [1] - ADMISSÃO             +\n" +
+        "+          [2] - DEMISSÃO             +\n" +
+        "+          [3] - CARGOS               +\n" +
+        "+          [4] - QUADRO               +\n" +
+        "+          [0] - VOLTAR               +\n" +
+        "+-------------------------------------+\n" +
+        "->  ";
+        return menu_rh;
+    }
+
+    public void cria_cargos(ContratoFuncoes cargos){
+
+        Funcoes cargo1 = new Funcoes();
+
+        cargo1.setFuncao("Atendente");
+
+        Funcoes cargo2 = new Funcoes();
+
+        cargo2.setFuncao("Estoquista");
+
+        Funcoes cargo3 = new Funcoes();
+
+        cargo3.setFuncao("Operador de caixa");
+
+        cargos.adicionar(cargo1);
+        cargos.adicionar(cargo2);
+        cargos.adicionar(cargo3);
     }
 }

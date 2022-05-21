@@ -1,8 +1,8 @@
 public interface ContratoFuncionarios {
     
-    public void adicionar(Funcionario f);
+    public void admissao(Funcionario f);
 
-    public void remover(Funcionario f);
+    public void demissao(Funcionario f);
 
     public void procurar(Funcionario f);
 }

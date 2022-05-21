@@ -6,4 +6,6 @@ public interface ContratoFuncoes {
 
     public void procurar();
 
+    public String getCargos(Integer cod);
+
 }

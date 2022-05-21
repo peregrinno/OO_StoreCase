@@ -20,5 +20,9 @@ class Caixa {
         return operador;
     }
 
+    public void atualiza_caixa(Double vl_venda){
+        this.caixa_inicial = this.caixa_inicial + vl_venda;
+    }
+
     
 }

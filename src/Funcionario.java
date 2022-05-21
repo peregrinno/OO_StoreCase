@@ -1,14 +1,9 @@
 class Funcionario {
-    private int id_funcionario;
     private String nome;
     private String cpf;
     private String data_de_nascimento;
     private String endereco;
     private String funcao;
-
-    public void setIdfuncionario(int id_funcionario){
-        this.id_funcionario = id_funcionario;
-    }
 
     public void setCpf(String cpf){
         this.cpf = cpf;
@@ -16,10 +11,6 @@ class Funcionario {
 
     public String getCpf(){
         return this.cpf;
-    }
-
-    public Integer getIdfuncionario(){
-        return id_funcionario;
     }
 
     public void setNome(String nome){
