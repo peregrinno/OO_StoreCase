@@ -22,7 +22,7 @@ public class ColecaoDeEstoque implements ContratoEstoque{
         }
     }
  
-    public void atualiza(Integer cod_att, Float pre_att){
+    public void atualiza(Integer cod_att, Double pre_att){
         if (cod_att <= 0){
             System.out.println("Código inválido, informe algo acima de 0");
         } else if (cod_att > meusProdutos.size()){
@@ -38,11 +38,30 @@ public class ColecaoDeEstoque implements ContratoEstoque{
         System.out.println("+--------- INVENTÁRIO ATUAL ----------+");
         for (int i=0; i<meusProdutos.size(); i++){
             System.out.println("PRODUTO #" + cont++ +"\n"+
-            "CATEGORIA: " + meusProdutos.get(i).getCategoria() + "\n" +
-            "MODELO...: " + meusProdutos.get(i).getModelo() + "\n" +
-            "TIPO.....: " + meusProdutos.get(i).getTipo() + "\n" +
-            "PREÇO....: " + meusProdutos.get(i).getPreco() + "\n" + "=========================");
+            "CATEGORIA.: " + meusProdutos.get(i).getCategoria() + "\n" +
+            "MODELO....: " + meusProdutos.get(i).getModelo() + "\n" +
+            "TIPO......: " + meusProdutos.get(i).getTipo() + "\n" +
+            "PREÇO.....: " + meusProdutos.get(i).getPreco() + "\n" + 
+            "QUANTIDADE: " + meusProdutos.get(i).getQuant() + "\n"+
+            "=========================");
         }
         System.out.println("+-------------------------------------+");
+    }
+
+    public boolean tem_estoque(){
+        if (meusProdutos.size() > 0){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public Double desconta_estoque(Integer cod, Integer quant){
+        meusProdutos.get(cod).setQuant(meusProdutos.get(cod).getQuant() - quant);
+        return meusProdutos.get(cod).getPreco() * quant;
+    }
+
+    public String procura_item(Integer cod){
+        return meusProdutos.get(cod).toString();
     }
 }

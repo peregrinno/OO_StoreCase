@@ -3,10 +3,16 @@ import java.util.*;
 public class App {
     public static void main(String[] args) throws Exception {
         boolean status_loja = true;
+        boolean caixa_aberto = false;
         Integer entrada1;
         
        // boolean status_adm = true;
         //Scanner menu_adm = new Scanner(System.in);
+
+        //Novo objeto da Colecao de estoque
+        ContratoEstoque estoque = new ColecaoDeEstoque();
+
+        ContratoDeVendas vendas = new ColecaoDeVendas();
 
         
         while (status_loja == true) {
@@ -27,15 +33,12 @@ public class App {
                     status_loja = false;
                     break;
                 case 1:
-                    //Novo objeto da Colecao de estoque
-                    ContratoEstoque estoque = new ColecaoDeEstoque();
-
                     Scanner entrada_menu_estoque = new Scanner(System.in);
                     String ent_menu_estoque;
                     boolean status_estoque = true;
 
                     while(status_estoque == true){
-                        util.menu_estoque();
+                        System.out.print(util.menu_estoque());
 
                         ent_menu_estoque = entrada_menu_estoque.next();
 
@@ -62,7 +65,9 @@ public class App {
                                 produto.setTipo(dados_produto.nextLine());
                                 //produto.setTipo(dados_produto.next());
                                 System.out.print("VALOR: ");
-                                produto.setPreco(dados_produto.nextFloat());
+                                produto.setPreco(dados_produto.nextDouble());
+                                System.out.print("QUANTIDADE: ");
+                                produto.setQuant(dados_produto.nextInt());
 
                                 estoque.cadastra(produto);
                         
@@ -80,25 +85,87 @@ public class App {
                                 System.out.print("Informe o codigo do item: \n -> ");
                                 Integer cod_att = ent_att.nextInt();
                                 System.out.print("Informe o novo preço: \n -> ");
-                                Float pre_att = ent_att.nextFloat();
+                                Double pre_att = ent_att.nextDouble();
                                 estoque.atualiza(cod_att, pre_att);
                                 break;
                             default:
                                 System.out.println("Entrada incorreta");
+                                break;
                         }
                     }
-    
                     break;
-                    /*
-                case "2":
+            
+                case 2:
+                    boolean status_caixa = true;
+                    
+                    Scanner entrada_menu_caixa = new Scanner(System.in);
+                    Integer ent_menu_caixa;
 
-                    //Novo objeto da classe caixa
+                    while (status_caixa == true){
 
-                    caixa.mostra_menu2();
+                        System.out.print(util.menu_caixa());
 
+                        ent_menu_caixa = entrada_menu_caixa.nextInt();
+                        String n_op;
+                        Double cx_ini;
+
+                        switch(ent_menu_caixa){
+                            case 0:
+                                System.out.println("Voltando para o menu...");
+                                status_caixa = false;
+                                break;
+
+                            case 1:
+                                if (caixa_aberto == true) {
+                                    System.out.println("O caixa já esta aberto!");
+                                    break;
+                                } else {
+                                    Caixa cx = new Caixa();
+                                    System.out.print("ABERTURA DE CAIXA\n");
+                                    System.out.print(" ");
+                                    System.out.print("OPERADOR.....: ");
+                                    entrada_menu_caixa.nextLine();
+                                    n_op = entrada_menu_caixa.nextLine();
+                                    cx.setOperador(n_op);
+                                    cx.setOperador(n_op);
+                                    System.out.print("CAIXA INICIAL:");
+                                    cx_ini = entrada_menu_caixa.nextDouble();
+                                    cx.setCaixaInicial(cx_ini);
+                                    caixa_aberto = true;
+                                    break;
+                                }
+                            case 2:
+                                if (caixa_aberto = false) {
+                                    System.out.println("Você precisa abrir o caixa primeiro!");
+                                    break;
+                                } else if (estoque.tem_estoque() == false) {
+                                    System.out.println("Sem produtos no estoque! Impossivel realizar venda!");
+                                    break;
+                                }else {
+                                    String n_cliente;
+                                    System.out.print("======= NOVA VENDA =======\n");
+                                    Vendas v = new Vendas();
+                                    System.out.print("CLIENTE: ");
+                                    entrada_menu_caixa.nextLine();
+                                    n_cliente = entrada_menu_caixa.nextLine();
+                                    v.setCliente(n_cliente);
+                                    util.venda_ativa(v, estoque);
+                                    vendas.nova_venda(v);
+                                    break;
+                                }
+                            case 3:
+                                vendas.relatorio_venda();
+                                break;
+                            default:
+                                System.out.println("Entrada inválido, informe algo entre 0 e 3");
+                                break;
+
+
+                        }
+                        
+                    }
                     break;
-                    */
-                    /*
+                /*
                 case "3":
                     
                     //Novo obejto da classe funcionario
