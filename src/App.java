@@ -32,7 +32,7 @@ public class App {
             //Chama metodo para mostrar menu
             System.out.print(util.mostrar_menu_inicial());
             
-            entrada1 = entrada_menu_inicial.nextInt();
+            entrada1 = Integer.parseInt(entrada_menu_inicial.nextLine());
 
             switch (entrada1) {
                 case 0:
@@ -107,14 +107,13 @@ public class App {
                     
                     Scanner entrada_menu_caixa = new Scanner(System.in);
                     Integer ent_menu_caixa;
-                    Caixa cx = new Caixa();
+                    Caixa cx = new Caixa(0.0);
 
                     while (status_caixa == true){
 
                         System.out.print(util.menu_caixa());
 
                         ent_menu_caixa = entrada_menu_caixa.nextInt();
-                        
                         String n_op;
                         Double cx_ini;
 
@@ -135,16 +134,15 @@ public class App {
                                     entrada_menu_caixa.nextLine();
                                     n_op = entrada_menu_caixa.nextLine();
                                     cx.setOperador(n_op);
-                                    cx.setOperador(n_op);
                                     System.out.print("CAIXA INICIAL: ");
                                     cx_ini = entrada_menu_caixa.nextDouble();
                                     cx.setCaixaInicial(cx_ini);
-                                    System.out.print("Caixa aberto com sucesso!");
+                                    System.out.print("Caixa aberto com sucesso!\n");
                                     caixa_aberto = true;
                                     break;
                                 }
                             case 2:
-                                if (caixa_aberto = false) {
+                                if (caixa_aberto == false) {
                                     System.out.println("Você precisa abrir o caixa primeiro!");
                                     break;
                                 } else if (estoque.tem_estoque() == false) {
@@ -161,6 +159,7 @@ public class App {
                                     util.venda_ativa(v, estoque);
                                     cx.atualiza_caixa(v.getTotal_venda());
                                     vendas.nova_venda(v);
+                                    status_caixa = false;
                                     break;
                                 }
                             case 3:
