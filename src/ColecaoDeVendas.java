@@ -6,6 +6,7 @@ public class ColecaoDeVendas implements ContratoDeVendas {
     @Override
     public void nova_venda(Vendas v) {
         minhasVendas.add(v);
+        System.out.println("Venda realizada com Sucesso\n");
     }
 
     @Override

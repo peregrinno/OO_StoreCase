@@ -114,6 +114,7 @@ public class App {
                         System.out.print(util.menu_caixa());
 
                         ent_menu_caixa = entrada_menu_caixa.nextInt();
+                        
                         String n_op;
                         Double cx_ini;
 
@@ -135,9 +136,10 @@ public class App {
                                     n_op = entrada_menu_caixa.nextLine();
                                     cx.setOperador(n_op);
                                     cx.setOperador(n_op);
-                                    System.out.print("CAIXA INICIAL:");
+                                    System.out.print("CAIXA INICIAL: ");
                                     cx_ini = entrada_menu_caixa.nextDouble();
                                     cx.setCaixaInicial(cx_ini);
+                                    System.out.print("Caixa aberto com sucesso!");
                                     caixa_aberto = true;
                                     break;
                                 }
@@ -209,6 +211,28 @@ public class App {
                                 colaborador.setFuncao(cargos.getCargos(entrada_menu_rh.nextInt()));
 
                                 quadro_colaboradores.admissao(colaborador);
+                                break;
+                            case 2:
+                                if (quadro_colaboradores.tem_funcionarios() == true) {
+                                    System.out.println("============ DEMISSÃO ============");
+                                    quadro_colaboradores.quadro();
+                                    System.out.println("COD. COLABORADOR: ");
+                                    ent_menu_rh = entrada_menu_rh.nextInt();
+                                    quadro_colaboradores.demissao(ent_menu_rh);
+                                    break;
+                                } else {
+                                    System.out.println("É preciso admitir funcionarios primeiro!");
+                                    break;
+                                }
+                            case 3:
+                                cargos.procurar();
+                                break;
+                            case 4:
+                                quadro_colaboradores.quadro();
+                                break;
+                            default:
+                                System.out.println("Entrada invalida!");
+                                break;
                         }
 
                     }

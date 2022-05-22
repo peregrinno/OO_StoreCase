@@ -57,7 +57,7 @@ public class Utilitarios {
             v.setProdutos_venda(String.format(qd+"x " +estoque.procura_item(cd - 1) + "R$ "+ subtotal));
             total = total + subtotal;
             v.setTotal_venda(total);
-            System.out.print("[1] ADC ITEM [2] FECHAR VENDA \n ->");
+            System.out.print("[1] ADC ITEM [2] FECHAR VENDA \n -> ");
             opc = vd_prod.nextInt();
             switch(opc) {
                 case 1:
