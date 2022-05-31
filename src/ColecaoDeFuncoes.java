@@ -15,7 +15,7 @@ public class ColecaoDeFuncoes implements ContratoFuncoes {
     public void procurar() {
         System.out.println(" CARGOS ATUAIS ");
         Integer cont = 0;
-        for (int i = 1; i < meusCargos.size(); i++) {
+        for (int i = 0; i < meusCargos.size(); i++) {
             System.out.println("["+ cont + "] " + meusCargos.get(i).getFuncao());
             cont++;
         }
