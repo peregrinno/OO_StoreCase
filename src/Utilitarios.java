@@ -8,7 +8,6 @@ public class Utilitarios {
                     "+          [1] - ESTOQUE              +\n" +
                     "+          [2] - VENDA                +\n" +
                     "+          [3] - RH                   +\n" +
-                    "+          [4] - ADMINISTRÇÃO         +\n" +
                     "+          [0] - SAIR                 +\n" +
                     "+-------------------------------------+\n" +
                     "->  ";

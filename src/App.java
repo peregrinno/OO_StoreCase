@@ -238,43 +238,6 @@ public class App {
 
                     break;
 
-                
-                /*
-                case "4":
-                    
-                    //Novo objeto da classe administração
-                    while(status_adm == true){
-                        contratoCrud adm = new Adm();
-
-                        adm.mostra_menu2();
-                        entrada2 = menu_adm.nextLine();
-                        
-                        switch(entrada2){
-
-                            case "0":
-                                System.out.println("Saindo");
-                                status_adm = false;
-                                break;
-                            
-                            case "1":
-                                System.out.println("Relatório de vendas");
-                                break;
-                            
-                            case "2":
-                                System.out.println("Cargos");
-                                break;
-                            
-                            case "3":
-                                System.out.println("Produtos + vendidos");
-                                break;
-                            
-                            default:
-                                System.out.println("Caso default");
-                                break;
-                        }
-                    }
-                    break;
-                    */
                 default:
                     System.out.println("Entrada invalida");
                     break;
