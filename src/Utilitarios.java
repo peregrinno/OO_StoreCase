@@ -69,7 +69,7 @@ public class Utilitarios {
                 
             }
         }
-        vd_prod.close();
+       // vd_prod.close();
     }
 
     String menu_rh(){

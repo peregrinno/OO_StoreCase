@@ -8,7 +8,7 @@ public class ColecaoDeFuncionarios implements ContratoFuncionarios{
     }
 
     public void demissao(Integer cod){
-        meusFuncionarios.remove(meusFuncionarios.get(cod));
+        meusFuncionarios.remove(meusFuncionarios.get(cod-1));
         System.out.println("Funcionario demitido!");
     }
 

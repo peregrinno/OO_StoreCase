@@ -3,11 +3,10 @@ public class Vendas {
     private Double total_venda;
     private String cliente;
 
-
     public void setProdutos_venda(String produtos_venda) {
         this.produtos_venda = this.produtos_venda + "\n" + produtos_venda;
     }
-
+    
     public String getProdutos_venda() {
         return this.produtos_venda;
     }
